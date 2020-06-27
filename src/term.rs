@@ -138,6 +138,7 @@ pub mod menu {
   }
 }
 
+#[cfg(test)]
 mod tests {
 
   
