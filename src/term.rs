@@ -120,11 +120,15 @@ pub mod menu {
             let items: Vec<(usize, String)> = selected_items.iter().map(|index| { (index.clone(), options[index.clone()].clone()) }).collect();
             let mut sorted = items.clone();
             sorted.sort_by(|a, b| a.0.cmp(&b.0));
+
+            write!(stdout, "{}", termion::cursor::Show).unwrap();
+
             return Some(ExecutionResult {
               selected_items: sorted
             })
           },
           Key::Char('q') => {
+            write!(stdout, "{}", termion::cursor::Show).unwrap();
             return None;
           }
           _ => {}
