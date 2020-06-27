@@ -1,5 +1,5 @@
 [package]
-name = "rich-menu"
+name = "rust-terminal-menu-research"
 version = "0.1.0"
 authors = ["José Oliveira <zeehtecnologia@gmail.com>"]
 edition = "2018"
