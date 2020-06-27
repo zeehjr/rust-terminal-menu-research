@@ -12,7 +12,7 @@ fn main() {
 
     let response = 
         term::menu::run(
-            &String::from("Please, select your choice?"), 
+            &String::from("Please, select your choice below.\r\nUp and Down to navigate | Space for selection | Enter to confirm | Q to exit"), 
             &options, 
             &term::menu::SelectionType::Simple
         );
