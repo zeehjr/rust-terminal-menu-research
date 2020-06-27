@@ -137,3 +137,52 @@ pub mod menu {
     }
   }
 }
+
+mod tests {
+
+  
+  mod render_item {
+    use super::super::menu::{render_item, SelectionType};
+
+    #[test]
+    fn can_generate_simple_item() {
+      let selection_type = SelectionType::Simple;
+      let text = String::from("Hello, try selecting an item");
+      let selected = true;
+      let highlighted = false;
+      let render_item_result = render_item(&selection_type, &text, selected, highlighted);
+      assert_eq!(render_item_result, format!("    {text}\u{1b}[39m", text=text));
+    }
+
+    #[test]
+    fn can_generate_highlighted_item() {
+      let selection_type = SelectionType::Simple;
+      let text = String::from("Hello, try selecting an item");
+      let selected = true;
+      let highlighted = true;
+      let render_item_result = render_item(&selection_type, &text, selected, highlighted);
+      assert_eq!(render_item_result, format!("\u{1b}[38;5;4m    {text}\u{1b}[39m", text=text));
+    }
+
+    #[test]
+    fn can_generate_radio_item() {
+      let selection_type = SelectionType::Radio;
+      let text = String::from("Hello, try selecting an item");
+      let selected = true;
+      let highlighted = false;
+      let render_item_result = render_item(&selection_type, &text, selected, highlighted);
+      assert_eq!(render_item_result, format!("(*) {text}\u{1b}[39m", text=text));
+    }
+
+    #[test]
+    fn can_generate_check_item() {
+      let selection_type = SelectionType::Check;
+      let text = String::from("Hello, try selecting an item");
+      let selected = true;
+      let highlighted = false;
+      let render_item_result = render_item(&selection_type, &text, selected, highlighted);
+      assert_eq!(render_item_result, format!("[*] {text}\u{1b}[39m", text=text));
+    }
+}
+
+}
