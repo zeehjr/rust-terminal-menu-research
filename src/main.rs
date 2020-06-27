@@ -14,7 +14,7 @@ fn main() {
         term::menu::run(
             &String::from("Please, select your choice below.\r\nUp and Down to navigate | Space for selection | Enter to confirm | Q to exit"), 
             &options, 
-            &term::menu::SelectionType::Simple
+            &term::menu::SelectionType::Check
         );
 
     if response.is_some() {
